@@ -1,0 +1,143 @@
+.food__section {
+  padding: 4rem;
+  background-color: var(--green-col);
+  color: var(--bg-col);
+}
+.drink__section {
+  padding: 4rem;
+  color: var(--green-col);
+  background-color: var(--bg-col);
+}
+
+.food__words,
+.drink__words {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 4rem;
+  z-index: 5;
+
+  .food__heading,
+  .drink__heading {
+    font-family: var(--title-font);
+    text-transform: uppercase;
+    font-size: var(--font-lg);
+    padding-bottom: 1rem;
+  }
+
+  .food__tag,
+  .drink__tag {
+    padding-bottom: 2rem;
+  }
+
+  .btn--food {
+    color: var(--green-col);
+    background-color: var(--bg-col);
+
+    &:hover {
+      color: var(--bg-col);
+      background-color: var(--green-col);
+    }
+  }
+}
+
+.food__img,
+.drink__img {
+  height: 25rem;
+
+  figure {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+
+    img {
+      width: 120%;
+      height: 120%;
+      object-fit: cover;
+      object-position: center;
+      transform: translate(-10%, -25%);
+      filter: brightness(0.5);
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .food__drink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50rem;
+  }
+
+  .food__words,
+  .drink__words {
+    padding-bottom: 0;
+  }
+
+  .food__section,
+  .drink__section {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-out;
+
+    &:hover {
+      flex: 2;
+      cursor: pointer;
+      color: var(--bg-col);
+
+      .food__img,
+      .drink__img,
+      .btn--menu {
+        opacity: 1;
+      }
+    }
+
+    .food__img,
+    .drink__img {
+      transition: all 0.3s;
+      position: absolute;
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      margin: auto;
+      z-index: 1;
+    }
+
+    .food__heading,
+    .drink__heading {
+      font-size: var(--font-xl);
+    }
+
+    .btn--food {
+      color: var(--bg-col);
+      background-color: var(--green-col);
+
+      &:hover {
+        color: var(--green-col);
+        background-color: var(--bg-col);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .food__drink {
+    min-height: 50rem;
+    height: 110vh;
+  }
+
+  .food__section,
+  .drink__section {
+    .food__heading,
+    .drink__heading {
+      font-size: var(--font-xxl);
+    }
+  }
+}

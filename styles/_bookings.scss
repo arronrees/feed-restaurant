@@ -1,0 +1,78 @@
+.book__section {
+  background-color: var(--red-col);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 4rem;
+
+  .book__heading {
+    color: var(--gold-col);
+    font-family: var(--title-font);
+    font-size: var(--font-lg);
+    padding-bottom: 4rem;
+  }
+
+  .book__questions {
+    font-size: var(--font-md);
+    color: var(--gold-col);
+    padding: 4rem;
+    position: relative;
+
+    span {
+      color: var(--bg-col);
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 1rem;
+
+      &:first-child::after {
+        content: 'foodanddrink@feed.com';
+        opacity: 0;
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        letter-spacing: 0.2rem;
+        color: var(--green-col);
+        background-color: var(--bg-col);
+        padding: 1rem;
+        border-radius: 5px;
+      }
+
+      &:last-child::after {
+        content: '02020202020';
+        opacity: 0;
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        letter-spacing: 0.2rem;
+        color: var(--green-col);
+        background-color: var(--bg-col);
+        padding: 1rem;
+        border-radius: 5px;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        transition: all 0.3s;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .book__section {
+    padding: 8rem;
+    .book__heading {
+      font-size: var(--font-xl);
+    }
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .book__section {
+    height: 60vh;
+    .book__heading {
+      font-size: var(--font-xxl);
+    }
+  }
+}

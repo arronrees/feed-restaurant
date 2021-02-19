@@ -1,0 +1,132 @@
+// header
+.main__header {
+  padding: 2rem;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+
+  // title
+  .logo__title {
+    font-size: var(--font-lg);
+    text-transform: uppercase;
+    color: var(--red-col);
+    font-family: var(--title-font);
+    z-index: 5;
+  }
+}
+
+// burger
+.header__burger__cont {
+  z-index: 5;
+}
+
+.header__burger {
+  background-color: var(--red-col);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+
+  .burger__line {
+    width: 2rem;
+    height: 5px;
+    margin: 4px 0;
+    border-radius: 2px;
+    background-color: white;
+    z-index: 5;
+  }
+}
+
+// nav
+.navbar {
+  position: absolute;
+  background-color: var(--bg-col);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+}
+
+.nav__menu {
+  padding: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 4;
+
+  .nav__item {
+    font-size: var(--font-lg);
+    text-transform: uppercase;
+    padding: 2rem 0;
+    color: var(--green-col);
+    overflow: hidden;
+    position: relative;
+
+    .nav__link {
+      &:after {
+        display: block;
+        content: '';
+        height: 2px;
+        background-color: var(--green-col);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        transform: translateX(-101%);
+      }
+      &:hover::after {
+        transition: transform 0.4s ease;
+        transform: translateX(0);
+      }
+    }
+    .nav__link.animate-out::after {
+      transition: transform 0.4s ease;
+      transform: translateX(100%);
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .header__burger__cont {
+    display: none;
+    pointer-events: none;
+  }
+
+  .navbar {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+  }
+
+  .nav__menu {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .nav__item {
+      padding: 0;
+      color: var(--white-col);
+
+      .nav__link {
+        &:after {
+          background-color: var(--white-col);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .navbar {
+    width: 50%;
+  }
+}
