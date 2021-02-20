@@ -33,12 +33,20 @@
     align-items: center;
     text-transform: uppercase;
     font-family: var(--title-font);
-    font-size: var(--font-xxl);
+    font-size: var(--font-xl);
     z-index: 3;
 
     span {
       padding: 0.25rem 0;
       text-shadow: -4px 0px var(--green-col);
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hero__section {
+    .hero__title {
+      font-size: var(--font-xxl);
     }
   }
 }

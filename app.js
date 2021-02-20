@@ -1,4 +1,74 @@
 //
+// loader
+//
+function initLoader() {
+  const loader = document.querySelector('.loader');
+  const loaderInner = document.querySelector('.loader .inner');
+  const progressBar = document.querySelector('.loader .progress');
+  const loaderMask = document.querySelector('.loader__mask');
+  // Show loader on page load
+  gsap.set(loader, { autoAlpha: 1 });
+  // Scale loader down
+  gsap.set(loaderInner, { scaleY: 0.005, transformOrigin: 'bottom' });
+
+  const tlLoaderIn = gsap.timeline({
+    defaults: {
+      duration: 1.1,
+      ease: 'power2.out',
+    },
+    onComplete: () =>
+      document.querySelector('body').classList.remove('is--loading'),
+  });
+
+  const image = document.querySelector('.loader__image img');
+  const mask = document.querySelector('.loader__image--mask');
+  const line1 = document.querySelector(
+    '.loader__title--mask:nth-child(1) span'
+  );
+  const line2 = document.querySelector(
+    '.loader__title--mask:nth-child(2) span'
+  );
+  const lines = document.querySelectorAll('.loader__title--mask');
+  const loaderContent = document.querySelector('.loader__content');
+
+  tlLoaderIn
+    .set(loaderContent, { autoAlpha: 1 })
+    .to(
+      loaderInner,
+      {
+        scaleY: 1,
+        transformOrigin: 'bottom',
+        ease: 'power1.inOut',
+      },
+      0.2
+    )
+    .addLabel('revealImage')
+    .from(mask, { yPercent: 100 }, 'revealImage-=0.6')
+    .to(image, { yPercent: 0 }, 'revealImage-=0.6')
+    .from([line1, line2], { yPercent: 100, stagger: 0.1 }, 'revealImage-=0.6');
+
+  const tlLoaderOut = gsap.timeline({
+    defaults: {
+      duration: 1.2,
+      ease: 'power2.inOut',
+    },
+    delay: 0.2,
+    onComplete: () => {
+      console.log('yes');
+    },
+  });
+
+  const tlLoader = gsap.timeline();
+  tlLoader.add(tlLoaderIn);
+  tlLoader.add(tlLoaderOut);
+
+  tlLoaderOut.to(lines, { yPercent: -500, stagger: 0.1 }, 0);
+  tlLoaderOut
+    .to([loader, loaderContent], { yPercent: -100 }, 0.2)
+    .from('#main-content', { y: 150 }, 0);
+}
+initLoader();
+//
 // nav slide
 //
 let navOpen = false;
@@ -149,7 +219,7 @@ function revealScroll() {
       gsap.set(el, { y: 50, autoAlpha: 0 });
       ScrollTrigger.create({
         trigger: el,
-        start: 'top 90%',
+        start: 'top 80%',
         onEnter: () => {
           gsap.to(el, { y: 0, autoAlpha: 1, ease: 'none' });
         },
@@ -158,7 +228,8 @@ function revealScroll() {
       gsap.set(el, { y: 50, autoAlpha: 0 });
       ScrollTrigger.create({
         trigger: el,
-        start: 'top 90%',
+        start: 'top 80%',
+
         onEnter: () => {
           gsap.to(el, { y: 0, autoAlpha: 1, ease: 'none' });
         },

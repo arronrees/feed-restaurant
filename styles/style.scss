@@ -32,6 +32,12 @@ li {
   --font-lg: 2rem;
   --font-xl: 3rem;
   --font-xxl: 4rem;
+
+  --loader-width: 15rem;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
@@ -39,10 +45,6 @@ body {
   background: var(--bg-col);
   line-height: 1.25;
   overflow-x: hidden;
-}
-
-body::-webkit-scrollbar {
-  // display: none;
 }
 
 .text--shadow {
@@ -100,6 +102,10 @@ body::-webkit-scrollbar {
   }
 }
 
+.trigger {
+  opacity: 0;
+}
+
 @media only screen and (min-width: 1024px) {
   .btn {
     font-size: var(--font-md);
@@ -110,6 +116,7 @@ body::-webkit-scrollbar {
   }
 }
 
+@import 'loader';
 @import 'header';
 @import 'hero';
 @import 'about';
